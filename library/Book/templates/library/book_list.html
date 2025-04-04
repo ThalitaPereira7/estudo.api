@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Livros</title>
+</head>
+<body>
+    <h1>Adicionar Novo Livro</h1>
+    
+    <!-- Formulário de cadastro -->
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar</button>
+    </form>
+
+    <h2>Livros Cadastrados</h2>
+    
+    <!-- Lista de livros -->
+    <ul>
+    {% for livro in livros %}
+        <li>{{ livro.title }} - {{ livro.author }}</li>
+    {% empty %}
+        <li>Nenhum livro cadastrado ainda.</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
+
+
